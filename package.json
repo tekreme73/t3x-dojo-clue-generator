@@ -1,0 +1,17 @@
+{
+  "name": "t3x-dojo-clue-generator",
+  "version": "1.0.0",
+  "description": "t3x-dojo-clue-generator",
+  "author": "tekreme73@gmail.com",
+  "repository": "https://github.com/tekreme73/t3x-dojo-clue-generator.git",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "t3x-dojo-clue-generator-app.js",
+  "scripts": {
+    "start": "polymer serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "latest",
+    "lit-element": "latest"
+  }
+}

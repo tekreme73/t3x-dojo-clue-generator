@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>DOJO clue generator - T3X</title>
+  <meta name="description" content="t3x-dojo-clue-generator-app">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Load polyfills -->
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" defer>
+  </script>
+
+  <!-- Load components via WebComponents.waitFor -->
+  <script type="module">
+    window.WebComponents = window.WebComponents || {
+      waitFor(cb) { addEventListener('WebComponentsReady', cb) }
+    }
+    WebComponents.waitFor(async () => {
+      import('./src/t3x-dojo-clue-generator-app.js');
+    });
+  </script>
+</head>
+
+<body>
+  <t3x-dojo-clue-generator-app>
+    <!-- Placeholders to improve time to first paint -->
+    <h1>Start DOJO clue generator!</h1>
+
+    <!-- Check for JavaScript -->
+    <p id="jsyes"></p>
+    <script type="text/javascript">
+      document.getElementById('jsyes').innerHTML = 'Loading...';
+    </script>
+    <noscript>
+      Could not render the custom element. Check that JavaScript is enabled.
+    </noscript>
+  </t3x-dojo-clue-generator-app>
+</body>
+
+</html>
