@@ -6,7 +6,10 @@ export class T3XDojoClueGeneratorElement extends LitElement {
    * observed.
    */
   static get properties() {
-    return {};
+    return {
+      teams: {type: Number,},
+      challenges: {type: Number,},
+    };
   }
 
   /**
@@ -14,6 +17,9 @@ export class T3XDojoClueGeneratorElement extends LitElement {
    */
   constructor() {
     super();
+
+    this.teams = 0;
+    this.challenges = 0;
   }
 
   render() {
@@ -22,6 +28,16 @@ export class T3XDojoClueGeneratorElement extends LitElement {
         :host { display: none; }
       </style>
     `;
+  }
+
+  generate() {
+    let clues = Array(this.teams).fill(Array(this.challenges).fill({}));
+
+    this.dispatchEvent(new CustomEvent('clues-generated', {
+      detail: { clues, },
+    }));
+
+    return clues;
   }
 }
 

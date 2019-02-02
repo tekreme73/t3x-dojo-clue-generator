@@ -14,16 +14,13 @@
 </head>
 
 <body>
-
-  <t3x-dojo-clue-generator-element id="fixture"></t3x-dojo-clue-generator-element>
-
   <script type="module">
     import { T3XDojoClueGeneratorElement } from '../src/t3x-dojo-clue-generator-element.js';
 
     suite('<t3x-dojo-clue-generator-element>', () => {
       let element;
       setup(() => {
-        element = document.getElementById('fixture');
+        element = document.createElement('t3x-dojo-clue-generator-element');
       });
 
       test('is instanciated', () => {
@@ -32,7 +29,47 @@
       test('using the element does not throw an error', () => {
         assert.ok(element);
       });
+
+      suite('returns clues for each team', () => {
+        setup(() => {
+          element.teams = getRandomInt(1, 20);
+        });
+        test('sync clues', () => {
+          const clues = element.generate();
+          assert.lengthOf(clues, element.teams);
+        });
+
+        test('async clues', () => {
+          element.addEventListener('clues-generated', (event) => {
+            const clues = event.detail.clues;
+            assert.lengthOf(clues, element.teams);
+          });
+          element.generate();
+        });
+      });
+
+      test('generate as many clues as challenges for each team', () => {
+        element.teams = 10;
+        element.challenges = getRandomInt(4, 10);
+
+        const clues = element.generate().filter(teamClues => teamClues.length === element.challenges);
+        assert.lengthOf(clues, element.teams);
+      });
+
+      test('default setup generate empty clues', () => {
+        assert.equal(element.teams, 0);
+        assert.equal(element.challenges, 0);
+
+        const clues = element.generate();
+        assert.lengthOf(clues, 0);
+      });
     });
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
   </script>
 
 </body>
