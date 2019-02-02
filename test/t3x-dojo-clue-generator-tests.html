@@ -30,38 +30,79 @@
         assert.ok(element);
       });
 
-      suite('returns clues for each team', () => {
-        setup(() => {
-          element.teams = getRandomInt(1, 20);
-        });
-        test('sync clues', () => {
-          const clues = element.generate();
-          assert.lengthOf(clues, element.teams);
-        });
-
-        test('async clues', () => {
-          element.addEventListener('clues-generated', (event) => {
-            const clues = event.detail.clues;
-            assert.lengthOf(clues, element.teams);
-          });
-          element.generate();
-        });
-      });
-
-      test('generate as many clues as challenges for each team', () => {
-        element.teams = 10;
-        element.challenges = getRandomInt(4, 10);
-
-        const clues = element.generate().filter(teamClues => teamClues.length === element.challenges);
-        assert.lengthOf(clues, element.teams);
-      });
-
-      test('default setup generate empty clues', () => {
+      test('default setup generates empty clues', () => {
         assert.equal(element.teams, 0);
         assert.equal(element.challenges, 0);
 
         const clues = element.generate();
         assert.lengthOf(clues, 0);
+      });
+
+      suite('generation process analysis', () => {
+        setup(() => {
+          element.teams = getRandomInt(6, 20);
+          element.challenges = getRandomInt(1, 10);
+        });
+
+        suite('each team receives clues', () => {
+          test('sync clues', () => {
+            const clues = element.generate();
+            assert.lengthOf(clues, element.teams);
+          });
+
+          test('async clues', () => {
+            element.addEventListener('clues-generated', (event) => {
+              const clues = event.detail.clues;
+              assert.lengthOf(clues, element.teams);
+            });
+            element.generate();
+          });
+        });
+
+        test('each team receives one clue per challenge', () => {
+          const clues = element.generate().filter(teamClues => teamClues.length === element.challenges);
+          assert.lengthOf(clues, element.teams);
+        });
+
+        test('each clue is well-formed', () => {
+          const clues = element.generate();
+          assert.notEmpty(clues);
+          clues.map((teamClues, teamId) => {
+            assert.notEmpty(teamClues);
+            teamClues.map(({team, challenge}) => {
+              const isWellFormed = team >= 0 && team < element.teams && challenge >= 0 && challenge < element.challenges;
+              const msg = `Team '${teamId}' received not well-formed clue! [clue=team:${team},challenge:${challenge}]`;
+              assert.isAtLeast(team, 0, msg);
+              assert.isAtLeast(challenge, 0, msg);
+              assert.isBelow(team, element.teams, msg);
+              assert.isBelow(challenge, element.challenges, msg);
+            });
+          });
+        });
+
+        test('each team receives clues from other teams', () => {
+          const clues = element.generate();
+          assert.notEmpty(clues);
+          clues.map((teamClues, teamId) => {
+            assert.notEmpty(teamClues);
+            teamClues.map(({team, challenge}) => {
+              const msg = `Team '${teamId}' received its own clue! [clue=team:${team},challenge:${challenge}]`;
+              assert.notStrictEqual(team, teamId, msg);
+            });
+          });
+        });
+
+        test('each team receives clue from all challenges', () => {
+          const _challenges = [...Array(element.challenges).keys()];
+          const clues = element.generate();
+          assert.notEmpty(clues);
+          clues.map((teamClues, teamId) => {
+            assert.notEmpty(teamClues);
+            const teamChallenges = teamClues.map(({team, challenge}) => challenge);
+            const msg = `Team '${teamId}' received a challenge more than once! [challenges=${_challenges}, teamChallenges=${teamChallenges}]`;
+            assert.sameMembers(_challenges, teamChallenges, msg);
+          });
+        });
       });
     });
 
