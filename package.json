@@ -8,10 +8,15 @@
   "main": "t3x-dojo-clue-generator-app.js",
   "scripts": {
     "start": "polymer serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wct --npm"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
   }
 }
