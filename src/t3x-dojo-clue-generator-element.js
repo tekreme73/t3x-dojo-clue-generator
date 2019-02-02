@@ -62,6 +62,8 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
     this.dispatchEvent(new CustomEvent('clues-generated', {
       detail: { clues, },
+      bubbles: true,
+      composed: true,
     }));
 
     return clues;
