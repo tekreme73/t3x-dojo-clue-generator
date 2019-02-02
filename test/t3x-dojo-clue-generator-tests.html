@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <title>T3X DOJO clue generator tests</title>
+
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
+</head>
+
+<body>
+
+  <t3x-dojo-clue-generator-element id="fixture"></t3x-dojo-clue-generator-element>
+
+  <script type="module">
+    import { T3XDojoClueGeneratorElement } from '../src/t3x-dojo-clue-generator-element.js';
+
+    suite('<t3x-dojo-clue-generator-element>', () => {
+      let element;
+      setup(() => {
+        element = document.getElementById('fixture');
+      });
+
+      test('is instanciated', () => {
+        assert.instanceOf(element, T3XDojoClueGeneratorElement);
+      });
+      test('using the element does not throw an error', () => {
+        assert.ok(element);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
