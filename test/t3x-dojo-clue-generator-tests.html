@@ -11,6 +11,8 @@
   <script src="../node_modules/mocha/mocha.js"></script>
   <script src="../node_modules/chai/chai.js"></script>
   <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
+
+  <script src="helpers.js"></script>
 </head>
 
 <body>
@@ -105,12 +107,6 @@
         });
       });
     });
-
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min)) + min;
-    }
   </script>
 
 </body>

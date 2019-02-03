@@ -41,7 +41,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
       }
     }
 
-    _clues = this.__shuffle(_clues);
+    _clues = shuffle(_clues);
 
     for(let team = 0; team < this.teams; team++) {
       for(let challenge = 0; challenge < this.challenges; challenge++) {
@@ -55,7 +55,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
         _clues.splice( index, 1 ); // Remove the item from the array
 
         if(index > _clues.length / 2) {
-          _clues = this.__shuffle(_clues);
+          _clues = shuffle(_clues);
         }
       }
     }
@@ -74,16 +74,6 @@ export class T3XDojoClueGeneratorElement extends LitElement {
       team,
       challenge,
     };
-  }
-  __shuffle(a) {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
   }
 }
 
