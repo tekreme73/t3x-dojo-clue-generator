@@ -60,6 +60,34 @@ export class T3XDojoClueGeneratorElement extends LitElement {
       }
     }
 
+    const problematicClues = clues.map((teamClues, teamId) => {
+      return teamClues.filter(({team, challenge}) => team === null || team === undefined);
+    })
+    .map((teamClues, teamId) => {
+      return teamClues.map(clue => {
+        clue.team = teamId;
+        return clue;
+      });
+    })
+    .filter((teamClues, teamId) => teamClues.length)
+    .reduce((previous, current) => {
+      return previous.concat(current); 
+    }, []);
+
+    for(let i = 0; i < _clues.length; i++) {
+      const missingTeam = _clues[i];
+      const problematicTeamClue = problematicClues.filter(({team, challenge}) => team = missingTeam).pop();
+      let _team = missingTeam;
+      let _matchingClue = problematicTeamClue;
+      do {
+        _team = getRandomInt(0, this.teams - 1);
+        _matchingClue = clues[_team][problematicTeamClue.challenge];
+      } while(_matchingClue.team === missingTeam);
+
+      clues[missingTeam][problematicTeamClue.challenge] = _matchingClue;
+      clues[_team][problematicTeamClue.challenge] = problematicTeamClue;
+    }
+
     this.dispatchEvent(new CustomEvent('clues-generated', {
       detail: { clues, },
       bubbles: true,
