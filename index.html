@@ -21,7 +21,7 @@
       waitFor(cb) { addEventListener('WebComponentsReady', cb) }
     }
     WebComponents.waitFor(async () => {
-      import('./src/t3x-dojo-clue-generator-app.js');
+      return import('./src/t3x-dojo-clue-generator-app.js');
     });
   </script>
 </head>
