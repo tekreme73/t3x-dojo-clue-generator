@@ -12,6 +12,8 @@ export class T3XDojoClueGeneratorApp extends LitElement {
       teamsCount: {type: Number,},
       challengesCount: {type: Number,},
       clues: {type: Array,},
+      givenClues: {type: Array,},
+      receivedClues: {type: Array,},
     };
   }
 
@@ -25,9 +27,13 @@ export class T3XDojoClueGeneratorApp extends LitElement {
     this.teamsCount = 10;
     this.challengesCount = 6;
     this.clues = [];
+    this.givenClues = [];
+    this.receivedClues = [];
 
     this.addEventListener('clues-generated', async (e) => {
       this.clues = e.detail.clues;
+      this.givenClues = e.detail.givenClues;
+      this.receivedClues = e.detail.receivedClues;
     });
   }
 
@@ -39,8 +45,8 @@ export class T3XDojoClueGeneratorApp extends LitElement {
     return html`
       <style>
         :host { display: block; }
-        .teams { display: flex; flex-wrap: wrap; }
-        .teams .team { width: 100%; min-width: 180px; max-width: 300px; }
+        h2 + .challenges, h2 + .teams { display: flex; flex-wrap: wrap; }
+        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 300px; }
         .input-wrapper { margin: 0.2em 0; }
         .input-wrapper label { display: inline-block; min-width: 150px; }
       </style>
@@ -60,17 +66,63 @@ export class T3XDojoClueGeneratorApp extends LitElement {
 
       <button @click="${this.generate}">GENERATE</button>
 
+      <h2>Organisation par défi</h2>
+      <ul class="challenges">
+        ${this.clues.map((teamClues, challengeId) => {
+          return html`
+            <li class="challenge" id="challenge-${challengeId}">
+              <h3>Indice ${challengeId+1}</h3>
+              <ul class="teams">
+                ${teamClues.sort((a, b) => a.from - b.from)
+                .map(({from, to}) => {
+                  return html`
+                    <li class="clue" id="clue-${from}-${to}">
+                      <span class="from">Équipe ${from+1}</span>
+                      =>
+                      <span class="to">Équipe ${to+1}</span>
+                    </li>
+                  `;
+                })}
+              </ul>
+            </li>
+          `;
+        })}
+      </ul>
+
+      <h2>Organisation par équipe (à quelle équipe doit être donné l'indice)</h2>
       <ul class="teams">
-        ${this.clues.map((teamClues, teamId) => {
+        ${this.givenClues.map((challengeClues, teamId) => {
           return html`
             <li class="team" id="team-${teamId}">
               <h3>Équipe ${teamId+1}</h3>
               <ul class="clues">
-                ${teamClues.map(({team, challenge}, clueId) => {
+                ${challengeClues.map(({team, challenge}, challengeId) => {
                   return html`
-                    <li class="clue" id="clue-${teamId}-${clueId}">
+                    <li class="clue" id="clue-${teamId}-${challengeId}">
                       <span class="challenge">Indice ${challenge+1}</span>
                       pour
+                      <span class="team">Équipe ${team+1}</span>
+                    </li>
+                  `;
+                })}
+              </ul>
+            </li>
+          `;
+        })}
+      </ul>
+
+      <h2>Organisation par équipe (quelle équipe doit envoyer l'indice)</h2>
+      <ul class="teams">
+        ${this.receivedClues.map((challengeClues, teamId) => {
+          return html`
+            <li class="team" id="team-${teamId}">
+              <h3>Équipe ${teamId+1}</h3>
+              <ul class="clues">
+                ${challengeClues.map(({team, challenge}, challengeId) => {
+                  return html`
+                    <li class="clue" id="clue-${teamId}-${challengeId}">
+                      <span class="challenge">Indice ${challenge+1}</span>
+                      par
                       <span class="team">Équipe ${team+1}</span>
                     </li>
                   `;

@@ -41,68 +41,106 @@
       });
 
       suite('generation process analysis', () => {
+        let clues;
         setup(() => {
-          element.teams = getRandomInt(6, 20);
           element.challenges = getRandomInt(1, 10);
+          element.teams = getRandomInt(6, 20);
+          clues = element.generate();
+          assert.notEmpty(clues);
         });
 
-        suite('each team gives clues', () => {
+        suite('each challenge generates clues', () => {
           test('sync clues', () => {
-            const clues = element.generate();
-            assert.lengthOf(clues, element.teams);
+            assert.lengthOf(clues, element.challenges);
           });
 
           test('async clues', () => {
             element.addEventListener('clues-generated', (event) => {
-              const clues = event.detail.clues;
-              assert.lengthOf(clues, element.teams);
+              const _clues = event.detail.clues;
+              assert.lengthOf(_clues, element.challenges);
             });
             element.generate();
           });
         });
 
-        test('each team gives one clue per challenge', () => {
-          const clues = element.generate().filter(teamClues => teamClues.length === element.challenges);
-          assert.lengthOf(clues, element.teams);
-        });
-
         test('each clue is well-formed', () => {
-          const clues = element.generate();
-          assert.notEmpty(clues);
-          clues.map((teamClues, teamId) => {
+          clues.map((teamClues, challenge) => {
             assert.notEmpty(teamClues);
-            teamClues.map(({team, challenge}) => {
-              const isWellFormed = team >= 0 && team < element.teams && challenge >= 0 && challenge < element.challenges;
-              const msg = `Team '${teamId}' gave not well-formed clue! [clue=team:${team},challenge:${challenge}]`;
-              assert.isAtLeast(team, 0, msg);
-              assert.isAtLeast(challenge, 0, msg);
-              assert.isBelow(team, element.teams, msg);
-              assert.isBelow(challenge, element.challenges, msg);
+            teamClues.map(({from, to}) => {
+              const msg = `Challenge '${challenge}' gave not well-formed clue! [clue=from:${from},to:${to}]`;
+              assert.isAtLeast(from, 0, msg);
+              assert.isAtLeast(to, 0, msg);
+              assert.isBelow(from, element.teams, msg);
+              assert.isBelow(to, element.teams, msg);
             });
           });
         });
 
-        test('each team gives clues from other teams', () => {
-          const clues = element.generate();
-          assert.notEmpty(clues);
-          clues.map((teamClues, teamId) => {
-            assert.notEmpty(teamClues);
-            teamClues.map(({team, challenge}) => {
-              const msg = `Team '${teamId}' gave its own clue! [clue=team:${team},challenge:${challenge}]`;
-              assert.notStrictEqual(team, teamId, msg);
+        suite('given clues', () => {
+          let givenClues;
+          setup(() => {
+            givenClues = element.getGivenClues();
+          });
+
+          test('given clues are based on teams', () => {
+            assert.lengthOf(givenClues, element.teams);
+          });
+
+          test('each team gives as many clue as challenge count', () => {
+            const _givenClues = givenClues.filter((challengeClues, challenge) => challengeClues.length === element.challenges);
+            assert.lengthOf(_givenClues, element.teams);
+          });
+
+          test('each team gives clues for other teams, not for itself', () => {
+            givenClues.map((challengeClues, teamId) => {
+              challengeClues.map(({team, challenge}) => {
+                const msg = `Team '${teamId}' gave its own clue! [clue=team:${team},challenge:${challenge}]`;
+                assert.notStrictEqual(team, teamId, msg);
+              });
+            });
+          });
+
+          test('each team gives clue for each challenge', () => {
+            const _challenges = [...Array(element.challenges).keys()];
+            givenClues.map((challengeClues, teamId) => {
+              const teamChallenges = challengeClues.map(({team, challenge}) => challenge);
+              const msg = `Team '${teamId}' gave a challenge more than once! [teamChallenges=${teamChallenges.sort()}, challenges=${_challenges}]`;
+              assert.sameMembers(teamChallenges, _challenges, msg);
             });
           });
         });
 
-        test('each team gives clue for each challenge', () => {
-          const _challenges = [...Array(element.challenges).keys()];
-          const clues = element.generate();
-          assert.notEmpty(clues);
-          clues.map((teamClues, teamId) => {
-            assert.notEmpty(teamClues);
-            const teamChallenges = teamClues.map(({team, challenge}) => challenge);
-            const msg = `Team '${teamId}' gave a challenge more than once! [challenges=${_challenges}, teamChallenges=${teamChallenges.sort()}]`;
-            assert.sameMembers(teamChallenges, _challenges, msg);
+        suite('received clues', () => {
+          let receivedClues;
+          setup(() => {
+            receivedClues = element.getReceivedClues();
+          });
+
+          test('received clues are based on teams', () => {
+            assert.lengthOf(receivedClues, element.teams);
+          });
+
+          test('each team receives as many clue as challenge count', () => {
+            const _receivedClues = receivedClues.filter((challengeClues, challenge) => challengeClues.length === element.challenges);
+            assert.lengthOf(_receivedClues, element.teams);
+          });
+
+          test('each team receives clues from other teams, not from itself', () => {
+            receivedClues.map((challengeClues, teamId) => {
+              challengeClues.map(({team, challenge}) => {
+                const msg = `Team '${teamId}' received its own clue! [clue=team:${team},challenge:${challenge}]`;
+                assert.notStrictEqual(team, teamId, msg);
+              });
+            });
+          });
+
+          test('each team receives clue for each challenge', () => {
+            const _challenges = [...Array(element.challenges).keys()];
+            receivedClues.map((challengeClues, teamId) => {
+              const teamChallenges = challengeClues.map(({team, challenge}) => challenge);
+              const msg = `Team '${teamId}' received a clue for a challenge more than once! [teamChallenges=${teamChallenges.sort()}, challenges=${_challenges}]`;
+              assert.sameMembers(teamChallenges, _challenges, msg);
+            });
           });
         });
       });

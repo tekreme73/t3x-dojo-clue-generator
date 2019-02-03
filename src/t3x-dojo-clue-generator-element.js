@@ -7,8 +7,10 @@ export class T3XDojoClueGeneratorElement extends LitElement {
    */
   static get properties() {
     return {
-      teams: {type: Number,},
-      challenges: {type: Number,},
+      teams: { type: Number, },
+      challenges: { type: Number, },
+
+      clues: { type: Array, },
     };
   }
 
@@ -20,6 +22,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
     this.teams = 0;
     this.challenges = 0;
+    this.clues = [];
   }
 
   render() {
@@ -32,64 +35,24 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
   generate() {
     let clues = [];
-    let _clues = [];
+    let _teams = [...Array(this.teams).keys()];
 
-    for(let team = 0; team < this.teams; team++) {
-      clues.push([]);
-      for(let challenge = 0; challenge < this.challenges; challenge++) {
-        _clues.push(team);
+    for (let challenge = 0; challenge < this.challenges; challenge++) {
+      clues[challenge] = [];
+      _teams = shuffle(_teams);
+      for (let from = 0, to = 1; from < _teams.length; from++ , to = ((to + 1) % _teams.length)) {
+        clues[challenge].push(this._createTeamClue(_teams[from], _teams[to]));
       }
     }
 
-    _clues = shuffle(_clues);
-
-    for(let team = 0; team < this.teams; team++) {
-      for(let challenge = 0; challenge < this.challenges; challenge++) {
-        let index = 0;
-        let _team = _clues[index];
-        while(_team === team) {
-          _team = _clues[++index];
-        }
-
-        clues[team].push(this._createClue(_team, challenge));
-        _clues.splice( index, 1 ); // Remove the item from the array
-
-        if(index > _clues.length / 2) {
-          _clues = shuffle(_clues);
-        }
-      }
-    }
-
-    const problematicClues = clues.map((teamClues, teamId) => {
-      return teamClues.filter(({team, challenge}) => team === null || team === undefined);
-    })
-    .map((teamClues, teamId) => {
-      return teamClues.map(clue => {
-        clue.team = teamId;
-        return clue;
-      });
-    })
-    .filter((teamClues, teamId) => teamClues.length)
-    .reduce((previous, current) => {
-      return previous.concat(current); 
-    }, []);
-
-    for(let i = 0; i < _clues.length; i++) {
-      const missingTeam = _clues[i];
-      const problematicTeamClue = problematicClues.filter(({team, challenge}) => team = missingTeam).pop();
-      let _team = missingTeam;
-      let _matchingClue = problematicTeamClue;
-      do {
-        _team = getRandomInt(0, this.teams - 1);
-        _matchingClue = clues[_team][problematicTeamClue.challenge];
-      } while(_matchingClue.team === missingTeam);
-
-      clues[missingTeam][problematicTeamClue.challenge] = _matchingClue;
-      clues[_team][problematicTeamClue.challenge] = problematicTeamClue;
-    }
+    this.clues = clues;
 
     this.dispatchEvent(new CustomEvent('clues-generated', {
-      detail: { clues, },
+      detail: {
+        "clues": this.getClues(),
+        "givenClues": this.getGivenClues(),
+        "receivedClues": this.getReceivedClues(),
+      },
       bubbles: true,
       composed: true,
     }));
@@ -97,7 +60,51 @@ export class T3XDojoClueGeneratorElement extends LitElement {
     return clues;
   }
 
-  _createClue(team, challenge) {
+  getClues() {
+    return this.clues;
+  }
+  getGivenClues() {
+    const givenClues = [];
+    const clues = this.getClues();
+
+    for (let team = 0; team < this.teams; team++) {
+      givenClues[team] = [];
+    }
+
+    for (let challenge = 0; challenge < clues.length; challenge++) {
+      const teamClues = clues[challenge];
+      teamClues.map(({from, to}) => {
+        givenClues[from][challenge] = this._createChallengeClue(to, challenge);
+      })
+    }
+
+    return givenClues;
+  }
+  getReceivedClues() {
+    const receivedClues = [];
+    const clues = this.getClues();
+
+    for (let team = 0; team < this.teams; team++) {
+      receivedClues[team] = [];
+    }
+
+    for (let challenge = 0; challenge < clues.length; challenge++) {
+      const teamClues = clues[challenge];
+      teamClues.map(({from, to}) => {
+        receivedClues[to][challenge] = this._createChallengeClue(from, challenge);
+      })
+    }
+
+    return receivedClues;
+  }
+
+  _createTeamClue(from, to) {
+    return {
+      from,
+      to,
+    };
+  }
+  _createChallengeClue(team, challenge) {
     return {
       team,
       challenge,
