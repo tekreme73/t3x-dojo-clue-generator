@@ -11,6 +11,7 @@
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**",
     ".gitignore",
+    ".nojekyll",
     "LICENSE"
   ],
   "builds": [
