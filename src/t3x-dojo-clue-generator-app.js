@@ -61,7 +61,7 @@ export class T3XDojoClueGeneratorApp extends LitElement {
       <button @click="${this.generate}">GENERATE</button>
 
       <ul class="teams">
-        ${this.clues.sort().map((teamClues, teamId) => {
+        ${this.clues.map((teamClues, teamId) => {
           return html`
             <li class="team" id="team-${teamId}">
               <h3>Équipe ${teamId+1}</h3>
