@@ -9,7 +9,9 @@
     "package.json"
   ],
   "extraDependencies": [
-    "node_modules/@webcomponents/webcomponentsjs/**"
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    ".gitignore",
+    "LICENSE"
   ],
   "builds": [
     {
