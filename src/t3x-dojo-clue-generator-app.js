@@ -11,80 +11,80 @@ define(["exports"], function (_exports) {
   _exports.markerRegex = _exports.nodeMarker = _exports.marker = _exports.TemplateInstance$1 = _exports.TemplateInstance = _exports.templateCaches$1 = _exports.templateCaches = _exports.render$1 = _exports.render$2 = _exports.render = _exports.parts$1 = _exports.parts = _exports.EventPart$1 = _exports.EventPart = _exports.PropertyPart$1 = _exports.PropertyPart = _exports.PropertyCommitter$1 = _exports.PropertyCommitter = _exports.BooleanAttributePart$1 = _exports.BooleanAttributePart = _exports.NodePart$1 = _exports.NodePart = _exports.AttributePart$1 = _exports.AttributePart = _exports.AttributeCommitter$1 = _exports.AttributeCommitter = _exports.isPrimitive$1 = _exports.isPrimitive = _exports.nothing$1 = _exports.nothing = _exports.noChange$1 = _exports.noChange = _exports.removeNodes$1 = _exports.removeNodes = _exports.reparentNodes$1 = _exports.reparentNodes = _exports.isCEPolyfill = _exports.isDirective$1 = _exports.isDirective = _exports.directive$1 = _exports.directive = _exports.defaultTemplateProcessor$1 = _exports.defaultTemplateProcessor = _exports.DefaultTemplateProcessor$1 = _exports.DefaultTemplateProcessor = _exports.LitElement = _exports.SVGTemplateResult$2 = _exports.SVGTemplateResult$1 = _exports.SVGTemplateResult = _exports.TemplateResult$3 = _exports.TemplateResult$2 = _exports.TemplateResult$1 = _exports.TemplateResult = _exports.svg$2 = _exports.svg$1 = _exports.svg = _exports.html$2 = _exports.html$1 = _exports.html = _exports.UpdatingElement$1 = _exports.UpdatingElement = _exports.notEqual$1 = _exports.notEqual = _exports.defaultConverter$1 = _exports.defaultConverter = _exports.eventOptions$1 = _exports.eventOptions = _exports.queryAll$1 = _exports.queryAll = _exports.query$1 = _exports.query = _exports.customElement$1 = _exports.customElement = _exports.css$1 = _exports.css = _exports.unsafeCss$1 = _exports.unsafeCss = _exports.CSSResult$1 = _exports.CSSResult = _exports.supportsAdoptingStyleSheets$1 = _exports.supportsAdoptingStyleSheets = _exports.$t3xDojoClueGeneratorElement = _exports.$t3xDojoClueGeneratorApp = _exports.$litHtml = _exports.$template = _exports.$templateResult = _exports.$templateInstance = _exports.$templateFactory = _exports.$shadyRender = _exports.$render = _exports.$parts = _exports.$part = _exports.$modifyTemplate = _exports.$dom = _exports.$directive = _exports.$defaultTemplateProcessor = _exports.$litElement = _exports.$updatingElement = _exports.$decorators = _exports.$cssTag = void 0;
   _exports.T3XDojoClueGeneratorElement = _exports.T3XDojoClueGeneratorApp = _exports.lastAttributeNameRegex = _exports.createMarker$1 = _exports.createMarker = _exports.isTemplatePartActive$1 = _exports.isTemplatePartActive = _exports.Template$1 = _exports.Template = _exports.boundAttributeSuffix = void 0;
 
-  function _templateObject8_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject8_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"challenge\">Indice ", "</span>\n                      par\n                      <span class=\"team\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
 
-    _templateObject8_10799ee027e911e989deeb6600f9f159 = function _templateObject8_10799ee027e911e989deeb6600f9f159() {
+    _templateObject8_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject8_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject7_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject7_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"team\" id=\"team-", "\">\n              <h3>\xC9quipe ", "</h3>\n              <ul class=\"clues\">\n                ", "\n              </ul>\n            </li>\n          "]);
 
-    _templateObject7_10799ee027e911e989deeb6600f9f159 = function _templateObject7_10799ee027e911e989deeb6600f9f159() {
+    _templateObject7_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject7_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject6_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject6_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"challenge\">Indice ", "</span>\n                      pour\n                      <span class=\"team\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
 
-    _templateObject6_10799ee027e911e989deeb6600f9f159 = function _templateObject6_10799ee027e911e989deeb6600f9f159() {
+    _templateObject6_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject6_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject5_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject5_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"team\" id=\"team-", "\">\n              <h3>\xC9quipe ", "</h3>\n              <ul class=\"clues\">\n                ", "\n              </ul>\n            </li>\n          "]);
 
-    _templateObject5_10799ee027e911e989deeb6600f9f159 = function _templateObject5_10799ee027e911e989deeb6600f9f159() {
+    _templateObject5_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject5_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject4_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject4_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"from\">\xC9quipe ", "</span>\n                      =>\n                      <span class=\"to\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
 
-    _templateObject4_10799ee027e911e989deeb6600f9f159 = function _templateObject4_10799ee027e911e989deeb6600f9f159() {
+    _templateObject4_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject4_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject3_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject3_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"challenge\" id=\"challenge-", "\">\n              <h3>Indice ", "</h3>\n              <ul class=\"teams\">\n                ", "\n              </ul>\n            </li>\n          "]);
 
-    _templateObject3_10799ee027e911e989deeb6600f9f159 = function _templateObject3_10799ee027e911e989deeb6600f9f159() {
+    _templateObject3_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject3_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject2_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject2_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host { display: block; }\n        h2 + .challenges, h2 + .teams { display: flex; flex-wrap: wrap; }\n        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 300px; }\n        .input-wrapper { margin: 0.2em 0; }\n        .input-wrapper label { display: inline-block; min-width: 150px; }\n      </style>\n\n      <h1>Start DOJO clue generator!</h1>\n      <t3x-dojo-clue-generator-element id=\"generator\" teams=\"", "\" challenges=\"", "\"></t3x-dojo-clue-generator-element>\n\n      <div class=\"input-wrapper\">\n        <label>Nombre d'\xE9quipes</label>\n        <input type=\"number\" min=\"2\" .value=\"", "\" placeholder=\"Nombre d'\xE9quipes\" @input=\"", "\"/>\n      </div>\n      \n      <div class=\"input-wrapper\">\n        <label>Nombre de d\xE9fis</label>\n        <input type=\"number\" min=\"1\" .value=\"", "\" placeholder=\"Nombre de d\xE9fis\" @input=\"", "\"/>\n      </div>\n\n      <button @click=\"", "\">GENERATE</button>\n\n      <h2>Organisation par d\xE9fi</h2>\n      <ul class=\"challenges\">\n        ", "\n      </ul>\n\n      <h2>Organisation par \xE9quipe (\xE0 quelle \xE9quipe doit \xEAtre donn\xE9 l'indice)</h2>\n      <ul class=\"teams\">\n        ", "\n      </ul>\n\n      <h2>Organisation par \xE9quipe (quelle \xE9quipe doit envoyer l'indice)</h2>\n      <ul class=\"teams\">\n        ", "\n      </ul>\n    "]);
 
-    _templateObject2_10799ee027e911e989deeb6600f9f159 = function _templateObject2_10799ee027e911e989deeb6600f9f159() {
+    _templateObject2_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject2_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject_10799ee027e911e989deeb6600f9f159() {
+  function _templateObject_cea9999027eb11e9ba5ca93ed27802a8() {
     var data = babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host { display: none; }\n      </style>\n    "]);
 
-    _templateObject_10799ee027e911e989deeb6600f9f159 = function _templateObject_10799ee027e911e989deeb6600f9f159() {
+    _templateObject_cea9999027eb11e9ba5ca93ed27802a8 = function _templateObject_cea9999027eb11e9ba5ca93ed27802a8() {
       return data;
     };
 
@@ -3398,7 +3398,7 @@ define(["exports"], function (_exports) {
     babelHelpers.createClass(T3XDojoClueGeneratorElement, [{
       key: "render",
       value: function render() {
-        return html(_templateObject_10799ee027e911e989deeb6600f9f159());
+        return html(_templateObject_cea9999027eb11e9ba5ca93ed27802a8());
       }
     }, {
       key: "generate",
@@ -3600,25 +3600,25 @@ define(["exports"], function (_exports) {
     babelHelpers.createClass(T3XDojoClueGeneratorApp, [{
       key: "render",
       value: function render() {
-        return html(_templateObject2_10799ee027e911e989deeb6600f9f159(), this.teamsCount, this.challengesCount, this.teamsCount, this.handleTeamsInput, this.challengesCount, this.handleChallengesInput, this.generate, this.clues.map(function (teamClues, challengeId) {
-          return html(_templateObject3_10799ee027e911e989deeb6600f9f159(), challengeId, challengeId + 1, teamClues.sort(function (a, b) {
+        return html(_templateObject2_cea9999027eb11e9ba5ca93ed27802a8(), this.teamsCount, this.challengesCount, this.teamsCount, this.handleTeamsInput, this.challengesCount, this.handleChallengesInput, this.generate, this.clues.map(function (teamClues, challengeId) {
+          return html(_templateObject3_cea9999027eb11e9ba5ca93ed27802a8(), challengeId, challengeId + 1, teamClues.sort(function (a, b) {
             return a.from - b.from;
           }).map(function (_ref4) {
             var from = _ref4.from,
                 to = _ref4.to;
-            return html(_templateObject4_10799ee027e911e989deeb6600f9f159(), from, to, from + 1, to + 1);
+            return html(_templateObject4_cea9999027eb11e9ba5ca93ed27802a8(), from, to, from + 1, to + 1);
           }));
         }), this.givenClues.map(function (challengeClues, teamId) {
-          return html(_templateObject5_10799ee027e911e989deeb6600f9f159(), teamId, teamId + 1, challengeClues.map(function (_ref5, challengeId) {
+          return html(_templateObject5_cea9999027eb11e9ba5ca93ed27802a8(), teamId, teamId + 1, challengeClues.map(function (_ref5, challengeId) {
             var team = _ref5.team,
                 challenge = _ref5.challenge;
-            return html(_templateObject6_10799ee027e911e989deeb6600f9f159(), teamId, challengeId, challenge + 1, team + 1);
+            return html(_templateObject6_cea9999027eb11e9ba5ca93ed27802a8(), teamId, challengeId, challenge + 1, team + 1);
           }));
         }), this.receivedClues.map(function (challengeClues, teamId) {
-          return html(_templateObject7_10799ee027e911e989deeb6600f9f159(), teamId, teamId + 1, challengeClues.map(function (_ref6, challengeId) {
+          return html(_templateObject7_cea9999027eb11e9ba5ca93ed27802a8(), teamId, teamId + 1, challengeClues.map(function (_ref6, challengeId) {
             var team = _ref6.team,
                 challenge = _ref6.challenge;
-            return html(_templateObject8_10799ee027e911e989deeb6600f9f159(), teamId, challengeId, challenge + 1, team + 1);
+            return html(_templateObject8_cea9999027eb11e9ba5ca93ed27802a8(), teamId, challengeId, challenge + 1, team + 1);
           }));
         }));
       }
