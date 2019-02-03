@@ -8,7 +8,9 @@
   "main": "t3x-dojo-clue-generator-app.js",
   "scripts": {
     "start": "polymer serve",
-    "test": "polymer test"
+    "build": "polymer build",
+    "test": "npm run build && polymer test",
+    "lint": "polymer lint"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "latest",
