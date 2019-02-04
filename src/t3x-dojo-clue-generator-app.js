@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit-element';
 
 import './t3x-dojo-clue-generator-element';
+import { Game } from './models/Game';
 
 export class T3XDojoClueGeneratorApp extends LitElement {
   /**
@@ -10,10 +11,10 @@ export class T3XDojoClueGeneratorApp extends LitElement {
   static get properties() {
     return {
       teamsCount: {type: Number,},
+      puzzlesCount: {type: Number,},
       challengesCount: {type: Number,},
-      clues: {type: Array,},
-      givenClues: {type: Array,},
-      receivedClues: {type: Array,},
+
+      game: {type: Game,},
     };
   }
 
@@ -25,15 +26,13 @@ export class T3XDojoClueGeneratorApp extends LitElement {
     super();
 
     this.teamsCount = 10;
+    this.puzzlesCount = 12;
     this.challengesCount = 6;
-    this.clues = [];
-    this.givenClues = [];
-    this.receivedClues = [];
 
-    this.addEventListener('clues-generated', async (e) => {
-      this.clues = e.detail.clues;
-      this.givenClues = e.detail.givenClues;
-      this.receivedClues = e.detail.receivedClues;
+    this.game = null;
+
+    this.addEventListener('game-created', (e) => {
+      this.game = e.detail.game;
     });
   }
 
@@ -52,11 +51,21 @@ export class T3XDojoClueGeneratorApp extends LitElement {
       </style>
 
       <h1>Start DOJO clue generator!</h1>
-      <t3x-dojo-clue-generator-element id="generator" teams="${this.teamsCount}" challenges="${this.challengesCount}"></t3x-dojo-clue-generator-element>
+      <t3x-dojo-clue-generator-element
+        id="generator"
+        teamsCount="${this.teamsCount}"
+        puzzlesCount="${this.puzzlesCount}"
+        challengesCount="${this.challengesCount}"
+      ></t3x-dojo-clue-generator-element>
 
       <div class="input-wrapper">
         <label>Nombre d'équipes</label>
         <input type="number" min="2" .value="${this.teamsCount}" placeholder="Nombre d'équipes" @input="${this.handleTeamsInput}"/>
+      </div>
+      
+      <div class="input-wrapper">
+        <label>Nombre de puzzles</label>
+        <input type="number" min="2" .value="${this.puzzlesCount}" placeholder="Nombre de puzzles" @input="${this.handlePuzzlesInput}"/>
       </div>
       
       <div class="input-wrapper">
@@ -68,10 +77,10 @@ export class T3XDojoClueGeneratorApp extends LitElement {
 
       <h2>Organisation par défi</h2>
       <ul class="challenges">
-        ${this.clues.map((teamClues, challengeId) => {
+        ${this.clues.map((teamClues, challengeName) => {
           return html`
-            <li class="challenge" id="challenge-${challengeId}">
-              <h3>Indice ${challengeId+1}</h3>
+            <li class="challenge" id="challenge-${challengeName}">
+              <h3>Challenge ${challengeName}</h3>
               <ul class="teams">
                 ${teamClues.sort((a, b) => a.from - b.from)
                 .map(({from, to}) => {
@@ -88,50 +97,6 @@ export class T3XDojoClueGeneratorApp extends LitElement {
           `;
         })}
       </ul>
-
-      <h2>Organisation par équipe (à quelle équipe doit être donné l'indice)</h2>
-      <ul class="teams">
-        ${this.givenClues.map((challengeClues, teamId) => {
-          return html`
-            <li class="team" id="team-${teamId}">
-              <h3>Équipe ${teamId+1}</h3>
-              <ul class="clues">
-                ${challengeClues.map(({team, challenge}, challengeId) => {
-                  return html`
-                    <li class="clue" id="clue-${teamId}-${challengeId}">
-                      <span class="challenge">Indice ${challenge+1}</span>
-                      pour
-                      <span class="team">Équipe ${team+1}</span>
-                    </li>
-                  `;
-                })}
-              </ul>
-            </li>
-          `;
-        })}
-      </ul>
-
-      <h2>Organisation par équipe (quelle équipe doit envoyer l'indice)</h2>
-      <ul class="teams">
-        ${this.receivedClues.map((challengeClues, teamId) => {
-          return html`
-            <li class="team" id="team-${teamId}">
-              <h3>Équipe ${teamId+1}</h3>
-              <ul class="clues">
-                ${challengeClues.map(({team, challenge}, challengeId) => {
-                  return html`
-                    <li class="clue" id="clue-${teamId}-${challengeId}">
-                      <span class="challenge">Indice ${challenge+1}</span>
-                      par
-                      <span class="team">Équipe ${team+1}</span>
-                    </li>
-                  `;
-                })}
-              </ul>
-            </li>
-          `;
-        })}
-      </ul>
     `;
   }
   generate() {
@@ -139,6 +104,9 @@ export class T3XDojoClueGeneratorApp extends LitElement {
   }
   handleTeamsInput(e) {
     this.teamsCount = e.target.value;
+  }
+  handlePuzzlesInput(e) {
+    this.puzzlesCount = e.target.value;
   }
   handleChallengesInput(e) {
     this.challengesCount = e.target.value;
