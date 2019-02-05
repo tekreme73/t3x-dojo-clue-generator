@@ -23,6 +23,13 @@ export class Clue {
     return this.challenge;
   }
 
+  getFromPuzzlePiece() {
+    return this.getFrom().getPuzzlePiece(this.getChallenge().getId());
+  }
+  getToPuzzlePiece() {
+    return this.getTo().getPuzzlePiece(this.getChallenge().getId());
+  }
+
   toString() {
     return this.getName();
   }
