@@ -37,7 +37,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
   }
 
   generate() {
-    const puzzles = this.createPuzzles(this.puzzlesCount);
+    const puzzles = this.createPuzzles(this.puzzlesCount, this.challengesCount);
     const teams = this.createTeams(this.teamsCount, puzzles);
     const challenges = this.createChallenges(this.challengesCount, teams);
 
@@ -53,25 +53,29 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
     return game;
   }
-  createPuzzles(quantity) {
+  createPuzzles(quantity, piecesQuantity) {
     return [...Array(quantity).keys()].map(i => {
-      return new Puzzle(i, `P${i+1}`);
+      return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), piecesQuantity);
     });
   }
   createTeams(quantity, puzzles) {
     let _puzzles = [];
     do {
       _puzzles = _puzzles.concat(puzzles);
-    } while(_puzzles.length < quantity);
+    } while (_puzzles.length < quantity);
     _puzzles = shuffle(_puzzles.slice(0, quantity));
 
+    const teamNames = [
+    ];
+
     return [...Array(quantity).keys()].map(i => {
-      return new Team(i, `T${i+1}`, _puzzles.pop());
+      const teamName = teamNames.length > i ? teamNames[i] : `T${i + 1}`;
+      return new Team(i, teamName, _puzzles.pop());
     });
   }
   createChallenges(quantity, teams) {
     return [...Array(quantity).keys()].map(i => {
-      return new Challenge(i, `C${i+1}`, teams);
+      return new Challenge(i, `C${i + 1}`, teams);
     });
   }
 }
