@@ -12,6 +12,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
   static get properties() {
     return {
       teamsCount: { type: Number, },
+      teamNames: { type: Array, },
       puzzlesCount: { type: Number, },
       challengesCount: { type: Number, },
     };
@@ -24,6 +25,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
     super();
 
     this.teamsCount = 0;
+    this.teamNames = [];
     this.puzzlesCount = 0;
     this.challengesCount = 0;
   }
@@ -38,7 +40,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
   generate() {
     const puzzles = this.createPuzzles(this.puzzlesCount, this.challengesCount);
-    const teams = this.createTeams(this.teamsCount, puzzles);
+    const teams = this.createTeams(this.teamsCount, this.teamNames, puzzles);
     const challenges = this.createChallenges(this.challengesCount, teams);
 
     const game = new Game((new Date()).getTime(), teams, puzzles, challenges);
@@ -58,19 +60,16 @@ export class T3XDojoClueGeneratorElement extends LitElement {
       return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), clueQuantity);
     });
   }
-  createTeams(quantity, puzzles) {
+  createTeams(quantity, names, puzzles) {
     let _puzzles = [];
     do {
       _puzzles = _puzzles.concat(puzzles);
     } while (_puzzles.length < quantity);
     _puzzles = shuffle(_puzzles.slice(0, quantity));
 
-    const teamNames = [
-    ];
-
     return [...Array(quantity).keys()].map(i => {
-      const teamName = teamNames.length > i ? teamNames[i] : `T${i + 1}`;
-      return new Team(i, teamName, _puzzles.pop());
+      const name = names.length > i ? names[i] : `T${i + 1}`;
+      return new Team(i, name, _puzzles.pop());
     });
   }
   createChallenges(quantity, teams) {

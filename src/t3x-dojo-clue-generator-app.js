@@ -34,6 +34,7 @@ export class T3XDojoClueGeneratorApp extends LitElement {
 
     this.game = null;
     this.teams = [];
+    this.teamNames = [];
     this.puzzles = [];
     this.challenges = [];
 
@@ -62,6 +63,7 @@ export class T3XDojoClueGeneratorApp extends LitElement {
         teamsCount="${this.teamsCount}"
         puzzlesCount="${this.puzzlesCount}"
         challengesCount="${this.challengesCount}"
+        .teamNames="${this.teamNames}"
       ></t3x-dojo-clue-generator-element>
 
       <div class="input-wrapper">
@@ -77,6 +79,11 @@ export class T3XDojoClueGeneratorApp extends LitElement {
       <div class="input-wrapper">
         <label>Challenge quantity</label>
         <input type="number" min="1" .value="${this.challengesCount}" placeholder="Challenge quantity" @input="${this.handleChallengesInput}"/>
+      </div>
+
+      <div class="input-wrapper">
+        <label>Team names</label>
+        <textarea rows="${this.teamsCount}" cols="40" placeholder="Team names (one on each line)" @input="${this.handleTeamNamesInput}"></textarea>
       </div>
 
       <button @click="${this.generate}">GENERATE</button>
@@ -120,6 +127,10 @@ export class T3XDojoClueGeneratorApp extends LitElement {
   }
   handleChallengesInput(e) {
     this.challengesCount = e.target.value;
+  }
+  handleTeamNamesInput(e) {
+    const input = e.target.value || '';
+    this.teamNames = input.split(/\r?\n/).map(v => v.trim()).filter(v => v);
   }
   set game(value) {
     if(value instanceof Game) {
