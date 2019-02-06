@@ -51,7 +51,7 @@ export class T3XDojoClueGeneratorApp extends LitElement {
       <style>
         :host { display: block; }
         h2 + .challenges, h2 + .teams { display: flex; flex-wrap: wrap; }
-        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 300px; }
+        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 500px; margin: 0.5em 0em 0.5em 2em; }
         .input-wrapper { margin: 0.2em 0; }
         .input-wrapper label { display: inline-block; min-width: 150px; }
       </style>
@@ -68,12 +68,12 @@ export class T3XDojoClueGeneratorApp extends LitElement {
         <label>Team quantity</label>
         <input type="number" min="2" .value="${this.teamsCount}" placeholder="Team quantity" @input="${this.handleTeamsInput}"/>
       </div>
-      
+
       <div class="input-wrapper">
         <label>Puzzle quantity</label>
         <input type="number" min="2" .value="${this.puzzlesCount}" placeholder="Puzzle quantity" @input="${this.handlePuzzlesInput}"/>
       </div>
-      
+
       <div class="input-wrapper">
         <label>Challenge quantity</label>
         <input type="number" min="1" .value="${this.challengesCount}" placeholder="Challenge quantity" @input="${this.handleChallengesInput}"/>
@@ -93,9 +93,11 @@ export class T3XDojoClueGeneratorApp extends LitElement {
                   .map((clue) => {
                     return html`
                       <li class="clue" id="clue-${clue.getId()}">
-                        <span class="from">Team ${clue.getFrom()}</span>
+                        <span class="from">Team "${clue.getFrom()}"</span>
+                        offer
+                        <span class="puzzle-piece">${clue.getToPuzzlePiece()}</span>
                         to
-                        <span class="to">Team ${clue.getTo()}</span>
+                        <span class="to">Team "${clue.getTo()}"</span>
                       </li>
                     `;
                   })}
