@@ -7,7 +7,7 @@ export class Challenge {
     this.name = name;
     this.teams = teams;
 
-    this.clues = this.createClues(shuffle(this.teams)).sort((a, b) => a.getId() - b.getId());
+    this.clues = this.createClues(shuffle(this.teams));
   }
 
   getId() {
@@ -20,7 +20,7 @@ export class Challenge {
     return this.teams;
   }
   getClues() {
-    return this.clues;
+    return this.clues.sort((a, b) => a.getFrom().getName().localeCompare(b.getFrom().getName()));
   }
 
   createClues(teams) {
