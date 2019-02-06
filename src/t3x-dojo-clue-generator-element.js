@@ -75,7 +75,7 @@ export class T3XDojoClueGeneratorElement extends LitElement {
   }
   createChallenges(quantity, teams) {
     return [...Array(quantity).keys()].map(i => {
-      return new Challenge(i, `C${i + 1}`, teams);
+      return new Challenge(i, `${i + 1}`, teams);
     });
   }
 }
