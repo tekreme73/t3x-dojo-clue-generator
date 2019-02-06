@@ -15,9 +15,9 @@ export class Team {
   getPuzzle() {
     return this.puzzle;
   }
-  getPuzzlePiece(pieceId) {
-    const pieces = this.getPuzzle().getPieces();
-    return pieces.length > pieceId && pieceId >= 0 ? pieces[pieceId] : null;
+  getClue(clueId) {
+    const clues = this.getPuzzle().getClues();
+    return clues.length > clueId && clueId >= 0 ? clues[clueId] : null;
   }
 
   toString() {

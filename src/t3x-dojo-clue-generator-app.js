@@ -89,15 +89,15 @@ export class T3XDojoClueGeneratorApp extends LitElement {
               <li class="challenge" id="challenge-${challenge.getId()}">
                 <h3>Challenge ${challenge}</h3>
                 <ul class="teams">
-                  ${challenge.getClues()
-                  .map((clue) => {
+                  ${challenge.getAnswers()
+                  .map((answer) => {
                     return html`
-                      <li class="clue" id="clue-${clue.getId()}">
-                        <span class="from">Team "${clue.getFrom()}"</span>
+                      <li class="answer" id="answer-${answer.getId()}">
+                        <span class="from">Team "${answer.getFrom()}"</span>
                         offer
-                        <span class="puzzle-piece">${clue.getToPuzzlePiece()}</span>
+                        <span class="clue">${answer.getToClue()}</span>
                         to
-                        <span class="to">Team "${clue.getTo()}"</span>
+                        <span class="to">Team "${answer.getTo()}"</span>
                       </li>
                     `;
                   })}

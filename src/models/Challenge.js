@@ -1,4 +1,4 @@
-import { Clue } from "./Clue";
+import { Answer } from "./Answer";
 
 export class Challenge {
 
@@ -7,7 +7,7 @@ export class Challenge {
     this.name = name;
     this.teams = teams;
 
-    this.clues = this.createClues(shuffle(this.teams));
+    this.answers = this.createAnswers(shuffle(this.teams));
   }
 
   getId() {
@@ -19,16 +19,16 @@ export class Challenge {
   getTeams() {
     return this.teams;
   }
-  getClues() {
-    return this.clues.sort((a, b) => a.getFrom().getName().localeCompare(b.getFrom().getName()));
+  getAnswers() {
+    return this.answers.sort((a, b) => a.getFrom().getName().localeCompare(b.getFrom().getName()));
   }
 
-  createClues(teams) {
-    let clues = [];
+  createAnswers(teams) {
+    let answers = [];
     for (let from = 0, to = 1; from < teams.length; from++ , to = ((to + 1) % teams.length)) {
-      clues.push(new Clue(this.getId() * teams.length + from, teams[from], teams[to], this));
+      answers.push(new Answer(this.getId() * teams.length + from, teams[from], teams[to], this));
     }
-    return clues;
+    return answers;
   }
 
   toString() {

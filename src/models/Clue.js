@@ -1,33 +1,19 @@
 
 export class Clue {
-  constructor(id, from, to, challenge) {
+  constructor(id, name, puzzle) {
     this.id = id;
-    this.from = from;
-    this.to = to;
-    this.challenge = challenge;
+    this.name = name;
+    this.puzzle = puzzle;
   }
 
   getId() {
     return this.id;
   }
   getName() {
-    return `${this.getTo().getPuzzle()}-${this.getId()}`;
+    return this.name;
   }
-  getFrom() {
-    return this.from;
-  }
-  getTo() {
-    return this.to;
-  }
-  getChallenge() {
-    return this.challenge;
-  }
-
-  getFromPuzzlePiece() {
-    return this.getFrom().getPuzzlePiece(this.getChallenge().getId());
-  }
-  getToPuzzlePiece() {
-    return this.getTo().getPuzzlePiece(this.getChallenge().getId());
+  getPuzzle() {
+    return this.puzzle;
   }
 
   toString() {

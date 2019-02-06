@@ -1,11 +1,11 @@
-import { Piece } from "./Piece";
+import { Clue } from "./Clue";
 
 export class Puzzle {
-  constructor(id, name, piecesQuantity) {
+  constructor(id, name, clueQuantity) {
     this.id = id;
     this.name = name;
 
-    this.pieces = this.createPieces(piecesQuantity);
+    this.clues = this.createClues(clueQuantity);
   }
 
   getId() {
@@ -14,17 +14,17 @@ export class Puzzle {
   getName() {
     return this.name;
   }
-  getPieces() {
-    return this.pieces;
+  getClues() {
+    return this.clues;
   }
 
-  createPieces(quantity) {
-    const pieces = [];
+  createClues(quantity) {
+    const clues = [];
 
     for (let i = 0; i < quantity; i++) {
-      pieces.push(new Piece(this.getId() * quantity + i, `${this.getName()}-${i + 1}`, this));
+      clues.push(new Clue(this.getId() * quantity + i, `${this.getName()}-${i + 1}`, this));
     }
-    return pieces;
+    return clues;
   }
 
   toString() {

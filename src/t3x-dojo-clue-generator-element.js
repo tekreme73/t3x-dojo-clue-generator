@@ -53,9 +53,9 @@ export class T3XDojoClueGeneratorElement extends LitElement {
 
     return game;
   }
-  createPuzzles(quantity, piecesQuantity) {
+  createPuzzles(quantity, clueQuantity) {
     return [...Array(quantity).keys()].map(i => {
-      return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), piecesQuantity);
+      return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), clueQuantity);
     });
   }
   createTeams(quantity, puzzles) {
