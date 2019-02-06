@@ -8,83 +8,53 @@ define(["exports"], function (_exports) {
   _exports.removeNodesFromTemplate = removeNodesFromTemplate;
   _exports.insertNodeIntoTemplate = insertNodeIntoTemplate;
   _exports.templateFactory$1 = _exports.templateFactory = templateFactory;
-  _exports.markerRegex = _exports.nodeMarker = _exports.marker = _exports.TemplateInstance$1 = _exports.TemplateInstance = _exports.templateCaches$1 = _exports.templateCaches = _exports.render$1 = _exports.render$2 = _exports.render = _exports.parts$1 = _exports.parts = _exports.EventPart$1 = _exports.EventPart = _exports.PropertyPart$1 = _exports.PropertyPart = _exports.PropertyCommitter$1 = _exports.PropertyCommitter = _exports.BooleanAttributePart$1 = _exports.BooleanAttributePart = _exports.NodePart$1 = _exports.NodePart = _exports.AttributePart$1 = _exports.AttributePart = _exports.AttributeCommitter$1 = _exports.AttributeCommitter = _exports.isPrimitive$1 = _exports.isPrimitive = _exports.nothing$1 = _exports.nothing = _exports.noChange$1 = _exports.noChange = _exports.removeNodes$1 = _exports.removeNodes = _exports.reparentNodes$1 = _exports.reparentNodes = _exports.isCEPolyfill = _exports.isDirective$1 = _exports.isDirective = _exports.directive$1 = _exports.directive = _exports.defaultTemplateProcessor$1 = _exports.defaultTemplateProcessor = _exports.DefaultTemplateProcessor$1 = _exports.DefaultTemplateProcessor = _exports.LitElement = _exports.SVGTemplateResult$2 = _exports.SVGTemplateResult$1 = _exports.SVGTemplateResult = _exports.TemplateResult$3 = _exports.TemplateResult$2 = _exports.TemplateResult$1 = _exports.TemplateResult = _exports.svg$2 = _exports.svg$1 = _exports.svg = _exports.html$2 = _exports.html$1 = _exports.html = _exports.UpdatingElement$1 = _exports.UpdatingElement = _exports.notEqual$1 = _exports.notEqual = _exports.defaultConverter$1 = _exports.defaultConverter = _exports.eventOptions$1 = _exports.eventOptions = _exports.queryAll$1 = _exports.queryAll = _exports.query$1 = _exports.query = _exports.customElement$1 = _exports.customElement = _exports.css$1 = _exports.css = _exports.unsafeCss$1 = _exports.unsafeCss = _exports.CSSResult$1 = _exports.CSSResult = _exports.supportsAdoptingStyleSheets$1 = _exports.supportsAdoptingStyleSheets = _exports.$t3xDojoClueGeneratorElement = _exports.$t3xDojoClueGeneratorApp = _exports.$litHtml = _exports.$template = _exports.$templateResult = _exports.$templateInstance = _exports.$templateFactory = _exports.$shadyRender = _exports.$render = _exports.$parts = _exports.$part = _exports.$modifyTemplate = _exports.$dom = _exports.$directive = _exports.$defaultTemplateProcessor = _exports.$litElement = _exports.$updatingElement = _exports.$decorators = _exports.$cssTag = void 0;
-  _exports.T3XDojoClueGeneratorElement = _exports.T3XDojoClueGeneratorApp = _exports.lastAttributeNameRegex = _exports.createMarker$1 = _exports.createMarker = _exports.isTemplatePartActive$1 = _exports.isTemplatePartActive = _exports.Template$1 = _exports.Template = _exports.boundAttributeSuffix = void 0;
+  _exports.templateCaches = _exports.render$1 = _exports.render$2 = _exports.render = _exports.parts$1 = _exports.parts = _exports.EventPart$1 = _exports.EventPart = _exports.PropertyPart$1 = _exports.PropertyPart = _exports.PropertyCommitter$1 = _exports.PropertyCommitter = _exports.BooleanAttributePart$1 = _exports.BooleanAttributePart = _exports.NodePart$1 = _exports.NodePart = _exports.AttributePart$1 = _exports.AttributePart = _exports.AttributeCommitter$1 = _exports.AttributeCommitter = _exports.isPrimitive$1 = _exports.isPrimitive = _exports.nothing$1 = _exports.nothing = _exports.noChange$1 = _exports.noChange = _exports.removeNodes$1 = _exports.removeNodes = _exports.reparentNodes$1 = _exports.reparentNodes = _exports.isCEPolyfill = _exports.isDirective$1 = _exports.isDirective = _exports.directive$1 = _exports.directive = _exports.defaultTemplateProcessor$1 = _exports.defaultTemplateProcessor = _exports.DefaultTemplateProcessor$1 = _exports.DefaultTemplateProcessor = _exports.LitElement = _exports.SVGTemplateResult$2 = _exports.SVGTemplateResult$1 = _exports.SVGTemplateResult = _exports.TemplateResult$3 = _exports.TemplateResult$2 = _exports.TemplateResult$1 = _exports.TemplateResult = _exports.svg$2 = _exports.svg$1 = _exports.svg = _exports.html$2 = _exports.html$1 = _exports.html = _exports.UpdatingElement$1 = _exports.UpdatingElement = _exports.notEqual$1 = _exports.notEqual = _exports.defaultConverter$1 = _exports.defaultConverter = _exports.eventOptions$1 = _exports.eventOptions = _exports.queryAll$1 = _exports.queryAll = _exports.query$1 = _exports.query = _exports.customElement$1 = _exports.customElement = _exports.css$1 = _exports.css = _exports.unsafeCss$1 = _exports.unsafeCss = _exports.CSSResult$1 = _exports.CSSResult = _exports.supportsAdoptingStyleSheets$1 = _exports.supportsAdoptingStyleSheets = _exports.$t3xDojoClueGeneratorElement = _exports.$t3xDojoClueGeneratorApp = _exports.$Team = _exports.$Puzzle = _exports.$Game = _exports.$Clue = _exports.$Challenge = _exports.$Answer = _exports.$litHtml = _exports.$template = _exports.$templateResult = _exports.$templateInstance = _exports.$templateFactory = _exports.$shadyRender = _exports.$render = _exports.$parts = _exports.$part = _exports.$modifyTemplate = _exports.$dom = _exports.$directive = _exports.$defaultTemplateProcessor = _exports.$litElement = _exports.$updatingElement = _exports.$decorators = _exports.$cssTag = void 0;
+  _exports.T3XDojoClueGeneratorElement = _exports.T3XDojoClueGeneratorApp = _exports.Team = _exports.Puzzle = _exports.Game = _exports.Clue = _exports.Challenge = _exports.Answer = _exports.lastAttributeNameRegex = _exports.createMarker$1 = _exports.createMarker = _exports.isTemplatePartActive$1 = _exports.isTemplatePartActive = _exports.Template$1 = _exports.Template = _exports.boundAttributeSuffix = _exports.markerRegex = _exports.nodeMarker = _exports.marker = _exports.TemplateInstance$1 = _exports.TemplateInstance = _exports.templateCaches$1 = void 0;
 
-  function _templateObject8_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"challenge\">Indice ", "</span>\n                      par\n                      <span class=\"team\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
+  function _templateObject5_93fadf8029a711e9bba061412e213f85() {
+    var data = babelHelpers.taggedTemplateLiteral(["\n                      <li class=\"answer\" id=\"answer-", "\">\n                        <span class=\"from\">Team \"", "\"</span>\n                        offer\n                        <span class=\"clue\">", "</span>\n                        to\n                        <span class=\"to\">Team \"", "\"</span>\n                      </li>\n                    "]);
 
-    _templateObject8_0e6304d027f211e9bf8c7b819e7646de = function _templateObject8_0e6304d027f211e9bf8c7b819e7646de() {
+    _templateObject5_93fadf8029a711e9bba061412e213f85 = function _templateObject5_93fadf8029a711e9bba061412e213f85() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject7_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"team\" id=\"team-", "\">\n              <h3>\xC9quipe ", "</h3>\n              <ul class=\"clues\">\n                ", "\n              </ul>\n            </li>\n          "]);
+  function _templateObject4_93fadf8029a711e9bba061412e213f85() {
+    var data = babelHelpers.taggedTemplateLiteral(["\n              <li class=\"challenge\" id=\"challenge-", "\">\n                <h3>Challenge ", "</h3>\n                <ul class=\"teams\">\n                  ", "\n                </ul>\n              </li>\n            "]);
 
-    _templateObject7_0e6304d027f211e9bf8c7b819e7646de = function _templateObject7_0e6304d027f211e9bf8c7b819e7646de() {
+    _templateObject4_93fadf8029a711e9bba061412e213f85 = function _templateObject4_93fadf8029a711e9bba061412e213f85() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject6_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"challenge\">Indice ", "</span>\n                      pour\n                      <span class=\"team\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
+  function _templateObject3_93fadf8029a711e9bba061412e213f85() {
+    var data = babelHelpers.taggedTemplateLiteral(["\n        <h2>Challenge view</h2>\n        <ul class=\"challenges\">\n          ", "\n        </ul>\n      "]);
 
-    _templateObject6_0e6304d027f211e9bf8c7b819e7646de = function _templateObject6_0e6304d027f211e9bf8c7b819e7646de() {
+    _templateObject3_93fadf8029a711e9bba061412e213f85 = function _templateObject3_93fadf8029a711e9bba061412e213f85() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject5_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"team\" id=\"team-", "\">\n              <h3>\xC9quipe ", "</h3>\n              <ul class=\"clues\">\n                ", "\n              </ul>\n            </li>\n          "]);
+  function _templateObject2_93fadf8029a711e9bba061412e213f85() {
+    var data = babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host { display: block; }\n        h2 + .challenges, h2 + .teams { display: flex; flex-wrap: wrap; }\n        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 500px; margin: 0.5em 0em 0.5em 2em; }\n        .input-wrapper { margin: 0.2em 0; }\n        .input-wrapper label { display: inline-block; min-width: 150px; }\n      </style>\n\n      <h1>Start DOJO clue generator!</h1>\n      <t3x-dojo-clue-generator-element\n        id=\"generator\"\n        teamsCount=\"", "\"\n        puzzlesCount=\"", "\"\n        challengesCount=\"", "\"\n      ></t3x-dojo-clue-generator-element>\n\n      <div class=\"input-wrapper\">\n        <label>Team quantity</label>\n        <input type=\"number\" min=\"2\" .value=\"", "\" placeholder=\"Team quantity\" @input=\"", "\"/>\n      </div>\n\n      <div class=\"input-wrapper\">\n        <label>Puzzle quantity</label>\n        <input type=\"number\" min=\"2\" .value=\"", "\" placeholder=\"Puzzle quantity\" @input=\"", "\"/>\n      </div>\n\n      <div class=\"input-wrapper\">\n        <label>Challenge quantity</label>\n        <input type=\"number\" min=\"1\" .value=\"", "\" placeholder=\"Challenge quantity\" @input=\"", "\"/>\n      </div>\n\n      <button @click=\"", "\">GENERATE</button>\n\n      ", "\n    "]);
 
-    _templateObject5_0e6304d027f211e9bf8c7b819e7646de = function _templateObject5_0e6304d027f211e9bf8c7b819e7646de() {
+    _templateObject2_93fadf8029a711e9bba061412e213f85 = function _templateObject2_93fadf8029a711e9bba061412e213f85() {
       return data;
     };
 
     return data;
   }
 
-  function _templateObject4_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n                    <li class=\"clue\" id=\"clue-", "-", "\">\n                      <span class=\"from\">\xC9quipe ", "</span>\n                      =>\n                      <span class=\"to\">\xC9quipe ", "</span>\n                    </li>\n                  "]);
-
-    _templateObject4_0e6304d027f211e9bf8c7b819e7646de = function _templateObject4_0e6304d027f211e9bf8c7b819e7646de() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject3_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n            <li class=\"challenge\" id=\"challenge-", "\">\n              <h3>Indice ", "</h3>\n              <ul class=\"teams\">\n                ", "\n              </ul>\n            </li>\n          "]);
-
-    _templateObject3_0e6304d027f211e9bf8c7b819e7646de = function _templateObject3_0e6304d027f211e9bf8c7b819e7646de() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject2_0e6304d027f211e9bf8c7b819e7646de() {
-    var data = babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host { display: block; }\n        h2 + .challenges, h2 + .teams { display: flex; flex-wrap: wrap; }\n        h2 + .challenges .challenge, h2 + .teams .team { width: 100%; min-width: 180px; max-width: 300px; }\n        .input-wrapper { margin: 0.2em 0; }\n        .input-wrapper label { display: inline-block; min-width: 150px; }\n      </style>\n\n      <h1>Start DOJO clue generator!</h1>\n      <t3x-dojo-clue-generator-element id=\"generator\" teams=\"", "\" challenges=\"", "\"></t3x-dojo-clue-generator-element>\n\n      <div class=\"input-wrapper\">\n        <label>Nombre d'\xE9quipes</label>\n        <input type=\"number\" min=\"2\" .value=\"", "\" placeholder=\"Nombre d'\xE9quipes\" @input=\"", "\"/>\n      </div>\n      \n      <div class=\"input-wrapper\">\n        <label>Nombre de d\xE9fis</label>\n        <input type=\"number\" min=\"1\" .value=\"", "\" placeholder=\"Nombre de d\xE9fis\" @input=\"", "\"/>\n      </div>\n\n      <button @click=\"", "\">GENERATE</button>\n\n      <h2>Organisation par d\xE9fi</h2>\n      <ul class=\"challenges\">\n        ", "\n      </ul>\n\n      <h2>Organisation par \xE9quipe (\xE0 quelle \xE9quipe doit \xEAtre donn\xE9 l'indice)</h2>\n      <ul class=\"teams\">\n        ", "\n      </ul>\n\n      <h2>Organisation par \xE9quipe (quelle \xE9quipe doit envoyer l'indice)</h2>\n      <ul class=\"teams\">\n        ", "\n      </ul>\n    "]);
-
-    _templateObject2_0e6304d027f211e9bf8c7b819e7646de = function _templateObject2_0e6304d027f211e9bf8c7b819e7646de() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject_0e6304d027f211e9bf8c7b819e7646de() {
+  function _templateObject_93fadf8029a711e9bba061412e213f85() {
     var data = babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host { display: none; }\n      </style>\n    "]);
 
-    _templateObject_0e6304d027f211e9bf8c7b819e7646de = function _templateObject_0e6304d027f211e9bf8c7b819e7646de() {
+    _templateObject_93fadf8029a711e9bba061412e213f85 = function _templateObject_93fadf8029a711e9bba061412e213f85() {
       return data;
     };
 
@@ -3354,6 +3324,304 @@ define(["exports"], function (_exports) {
   };
   _exports.$litElement = litElement;
 
+  var Answer =
+  /*#__PURE__*/
+  function () {
+    function Answer(id, from, to, challenge) {
+      babelHelpers.classCallCheck(this, Answer);
+      this.id = id;
+      this.from = from;
+      this.to = to;
+      this.challenge = challenge;
+    }
+
+    babelHelpers.createClass(Answer, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getName",
+      value: function getName() {
+        return "".concat(this.getTo().getPuzzle(), "-").concat(this.getId());
+      }
+    }, {
+      key: "getFrom",
+      value: function getFrom() {
+        return this.from;
+      }
+    }, {
+      key: "getTo",
+      value: function getTo() {
+        return this.to;
+      }
+    }, {
+      key: "getChallenge",
+      value: function getChallenge() {
+        return this.challenge;
+      }
+    }, {
+      key: "getFromClue",
+      value: function getFromClue() {
+        return this.getFrom().getClue(this.getChallenge().getId());
+      }
+    }, {
+      key: "getToClue",
+      value: function getToClue() {
+        return this.getTo().getClue(this.getChallenge().getId());
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.getName();
+      }
+    }]);
+    return Answer;
+  }();
+
+  _exports.Answer = Answer;
+  var Answer$1 = {
+    Answer: Answer
+  };
+  _exports.$Answer = Answer$1;
+
+  var Challenge =
+  /*#__PURE__*/
+  function () {
+    function Challenge(id, name, teams) {
+      babelHelpers.classCallCheck(this, Challenge);
+      this.id = id;
+      this.name = name;
+      this.teams = teams;
+      this.answers = this.createAnswers(shuffle(this.teams));
+    }
+
+    babelHelpers.createClass(Challenge, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getName",
+      value: function getName() {
+        return this.name;
+      }
+    }, {
+      key: "getTeams",
+      value: function getTeams() {
+        return this.teams;
+      }
+    }, {
+      key: "getAnswers",
+      value: function getAnswers() {
+        return this.answers.sort(function (a, b) {
+          return a.getFrom().getName().localeCompare(b.getFrom().getName());
+        });
+      }
+    }, {
+      key: "createAnswers",
+      value: function createAnswers(teams) {
+        var answers = [];
+
+        for (var from = 0, to = 1; from < teams.length; from++, to = (to + 1) % teams.length) {
+          answers.push(new Answer(this.getId() * teams.length + from, teams[from], teams[to], this));
+        }
+
+        return answers;
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.getName();
+      }
+    }]);
+    return Challenge;
+  }();
+
+  _exports.Challenge = Challenge;
+  var Challenge$1 = {
+    Challenge: Challenge
+  };
+  _exports.$Challenge = Challenge$1;
+
+  var Clue =
+  /*#__PURE__*/
+  function () {
+    function Clue(id, name, puzzle) {
+      babelHelpers.classCallCheck(this, Clue);
+      this.id = id;
+      this.name = name;
+      this.puzzle = puzzle;
+    }
+
+    babelHelpers.createClass(Clue, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getName",
+      value: function getName() {
+        return this.name;
+      }
+    }, {
+      key: "getPuzzle",
+      value: function getPuzzle() {
+        return this.puzzle;
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.getName();
+      }
+    }]);
+    return Clue;
+  }();
+
+  _exports.Clue = Clue;
+  var Clue$1 = {
+    Clue: Clue
+  };
+  _exports.$Clue = Clue$1;
+
+  var Game =
+  /*#__PURE__*/
+  function () {
+    function Game(id, teams, puzzles, challenges) {
+      babelHelpers.classCallCheck(this, Game);
+      this.id = id;
+      this.teams = teams;
+      this.puzzles = puzzles;
+      this.challenges = challenges;
+    }
+
+    babelHelpers.createClass(Game, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getTeams",
+      value: function getTeams() {
+        return this.teams;
+      }
+    }, {
+      key: "getPuzzles",
+      value: function getPuzzles() {
+        return this.puzzles;
+      }
+    }, {
+      key: "getChallenges",
+      value: function getChallenges() {
+        return this.challenges;
+      }
+    }]);
+    return Game;
+  }();
+
+  _exports.Game = Game;
+  var Game$1 = {
+    Game: Game
+  };
+  _exports.$Game = Game$1;
+
+  var Puzzle =
+  /*#__PURE__*/
+  function () {
+    function Puzzle(id, name, clueQuantity) {
+      babelHelpers.classCallCheck(this, Puzzle);
+      this.id = id;
+      this.name = name;
+      this.clues = this.createClues(clueQuantity);
+    }
+
+    babelHelpers.createClass(Puzzle, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getName",
+      value: function getName() {
+        return this.name;
+      }
+    }, {
+      key: "getClues",
+      value: function getClues() {
+        return this.clues;
+      }
+    }, {
+      key: "createClues",
+      value: function createClues(quantity) {
+        var clues = [];
+
+        for (var i = 0; i < quantity; i++) {
+          clues.push(new Clue(this.getId() * quantity + i, "".concat(this.getName(), "-").concat(i + 1), this));
+        }
+
+        return clues;
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.getName();
+      }
+    }]);
+    return Puzzle;
+  }();
+
+  _exports.Puzzle = Puzzle;
+  var Puzzle$1 = {
+    Puzzle: Puzzle
+  };
+  _exports.$Puzzle = Puzzle$1;
+
+  var Team =
+  /*#__PURE__*/
+  function () {
+    function Team(id, name, puzzle) {
+      babelHelpers.classCallCheck(this, Team);
+      this.id = id;
+      this.name = name;
+      this.puzzle = puzzle;
+    }
+
+    babelHelpers.createClass(Team, [{
+      key: "getId",
+      value: function getId() {
+        return this.id;
+      }
+    }, {
+      key: "getName",
+      value: function getName() {
+        return this.name;
+      }
+    }, {
+      key: "getPuzzle",
+      value: function getPuzzle() {
+        return this.puzzle;
+      }
+    }, {
+      key: "getClue",
+      value: function getClue(clueId) {
+        var clues = this.getPuzzle().getClues();
+        return clues.length > clueId && clueId >= 0 ? clues[clueId] : null;
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.getName();
+      }
+    }]);
+    return Team;
+  }();
+
+  _exports.Team = Team;
+  var Team$1 = {
+    Team: Team
+  };
+  _exports.$Team = Team$1;
+
   var T3XDojoClueGeneratorElement =
   /*#__PURE__*/
   function (_LitElement) {
@@ -3367,14 +3635,14 @@ define(["exports"], function (_exports) {
        */
       get: function get() {
         return {
-          teams: {
+          teamsCount: {
             type: Number
           },
-          challenges: {
+          puzzlesCount: {
             type: Number
           },
-          clues: {
-            type: Array
+          challengesCount: {
+            type: Number
           }
         };
       }
@@ -3389,119 +3657,62 @@ define(["exports"], function (_exports) {
 
       babelHelpers.classCallCheck(this, T3XDojoClueGeneratorElement);
       _this13 = babelHelpers.possibleConstructorReturn(this, babelHelpers.getPrototypeOf(T3XDojoClueGeneratorElement).call(this));
-      _this13.teams = 0;
-      _this13.challenges = 0;
-      _this13.clues = [];
+      _this13.teamsCount = 0;
+      _this13.puzzlesCount = 0;
+      _this13.challengesCount = 0;
       return _this13;
     }
 
     babelHelpers.createClass(T3XDojoClueGeneratorElement, [{
       key: "render",
       value: function render() {
-        return html(_templateObject_0e6304d027f211e9bf8c7b819e7646de());
+        return html(_templateObject_93fadf8029a711e9bba061412e213f85());
       }
     }, {
       key: "generate",
       value: function generate() {
-        var clues = [];
-
-        var _teams = babelHelpers.toConsumableArray(Array(this.teams).keys());
-
-        for (var challenge = 0; challenge < this.challenges; challenge++) {
-          clues[challenge] = [];
-          _teams = shuffle(_teams);
-
-          for (var from = 0, to = 1; from < _teams.length; from++, to = (to + 1) % _teams.length) {
-            clues[challenge].push(this._createTeamClue(_teams[from], _teams[to]));
-          }
-        }
-
-        this.clues = clues;
-        this.dispatchEvent(new CustomEvent('clues-generated', {
+        var puzzles = this.createPuzzles(this.puzzlesCount, this.challengesCount);
+        var teams = this.createTeams(this.teamsCount, puzzles);
+        var challenges = this.createChallenges(this.challengesCount, teams);
+        var game = new Game(new Date().getTime(), teams, puzzles, challenges);
+        this.dispatchEvent(new CustomEvent('game-created', {
           detail: {
-            "clues": this.getClues(),
-            "givenClues": this.getGivenClues(),
-            "receivedClues": this.getReceivedClues()
+            "game": game
           },
           bubbles: true,
           composed: true
         }));
-        return clues;
+        return game;
       }
     }, {
-      key: "getClues",
-      value: function getClues() {
-        return this.clues;
+      key: "createPuzzles",
+      value: function createPuzzles(quantity, clueQuantity) {
+        return babelHelpers.toConsumableArray(Array(quantity).keys()).map(function (i) {
+          return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), clueQuantity);
+        });
       }
     }, {
-      key: "getGivenClues",
-      value: function getGivenClues() {
-        var _this14 = this;
+      key: "createTeams",
+      value: function createTeams(quantity, puzzles) {
+        var _puzzles = [];
 
-        var givenClues = [];
-        var clues = this.getClues();
+        do {
+          _puzzles = _puzzles.concat(puzzles);
+        } while (_puzzles.length < quantity);
 
-        for (var team = 0; team < this.teams; team++) {
-          givenClues[team] = [];
-        }
-
-        var _loop = function _loop(challenge) {
-          var teamClues = clues[challenge];
-          teamClues.map(function (_ref) {
-            var from = _ref.from,
-                to = _ref.to;
-            givenClues[from][challenge] = _this14._createChallengeClue(to, challenge);
-          });
-        };
-
-        for (var challenge = 0; challenge < clues.length; challenge++) {
-          _loop(challenge);
-        }
-
-        return givenClues;
+        _puzzles = shuffle(_puzzles.slice(0, quantity));
+        var teamNames = [];
+        return babelHelpers.toConsumableArray(Array(quantity).keys()).map(function (i) {
+          var teamName = teamNames.length > i ? teamNames[i] : "T".concat(i + 1);
+          return new Team(i, teamName, _puzzles.pop());
+        });
       }
     }, {
-      key: "getReceivedClues",
-      value: function getReceivedClues() {
-        var _this15 = this;
-
-        var receivedClues = [];
-        var clues = this.getClues();
-
-        for (var team = 0; team < this.teams; team++) {
-          receivedClues[team] = [];
-        }
-
-        var _loop2 = function _loop2(challenge) {
-          var teamClues = clues[challenge];
-          teamClues.map(function (_ref2) {
-            var from = _ref2.from,
-                to = _ref2.to;
-            receivedClues[to][challenge] = _this15._createChallengeClue(from, challenge);
-          });
-        };
-
-        for (var challenge = 0; challenge < clues.length; challenge++) {
-          _loop2(challenge);
-        }
-
-        return receivedClues;
-      }
-    }, {
-      key: "_createTeamClue",
-      value: function _createTeamClue(from, to) {
-        return {
-          from: from,
-          to: to
-        };
-      }
-    }, {
-      key: "_createChallengeClue",
-      value: function _createChallengeClue(team, challenge) {
-        return {
-          team: team,
-          challenge: challenge
-        };
+      key: "createChallenges",
+      value: function createChallenges(quantity, teams) {
+        return babelHelpers.toConsumableArray(Array(quantity).keys()).map(function (i) {
+          return new Challenge(i, "".concat(i + 1), teams);
+        });
       }
     }]);
     return T3XDojoClueGeneratorElement;
@@ -3530,16 +3741,22 @@ define(["exports"], function (_exports) {
           teamsCount: {
             type: Number
           },
+          puzzlesCount: {
+            type: Number
+          },
           challengesCount: {
             type: Number
           },
-          clues: {
+          game: {
+            type: Game
+          },
+          teams: {
             type: Array
           },
-          givenClues: {
+          puzzles: {
             type: Array
           },
-          receivedClues: {
+          challenges: {
             type: Array
           }
         };
@@ -3551,45 +3768,24 @@ define(["exports"], function (_exports) {
     }]);
 
     function T3XDojoClueGeneratorApp() {
-      var _this16;
+      var _this14;
 
       babelHelpers.classCallCheck(this, T3XDojoClueGeneratorApp);
       // Must call superconstructor first.
-      _this16 = babelHelpers.possibleConstructorReturn(this, babelHelpers.getPrototypeOf(T3XDojoClueGeneratorApp).call(this));
-      _this16.teamsCount = 10;
-      _this16.challengesCount = 6;
-      _this16.clues = [];
-      _this16.givenClues = [];
-      _this16.receivedClues = [];
+      _this14 = babelHelpers.possibleConstructorReturn(this, babelHelpers.getPrototypeOf(T3XDojoClueGeneratorApp).call(this));
+      _this14.teamsCount = 10;
+      _this14.puzzlesCount = 12;
+      _this14.challengesCount = 6;
+      _this14.game = null;
+      _this14.teams = [];
+      _this14.puzzles = [];
+      _this14.challenges = [];
 
-      _this16.addEventListener('clues-generated',
-      /*#__PURE__*/
-      function () {
-        var _ref3 = babelHelpers.asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee2(e) {
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _this16.clues = e.detail.clues;
-                  _this16.givenClues = e.detail.givenClues;
-                  _this16.receivedClues = e.detail.receivedClues;
+      _this14.addEventListener('game-created', function (e) {
+        _this14.game = e.detail.game;
+      });
 
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, this);
-        }));
-
-        return function (_x) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-
-      return _this16;
+      return _this14;
     }
     /**
      * Define a template for the new element by implementing LitElement's
@@ -3600,27 +3796,11 @@ define(["exports"], function (_exports) {
     babelHelpers.createClass(T3XDojoClueGeneratorApp, [{
       key: "render",
       value: function render() {
-        return html(_templateObject2_0e6304d027f211e9bf8c7b819e7646de(), this.teamsCount, this.challengesCount, this.teamsCount, this.handleTeamsInput, this.challengesCount, this.handleChallengesInput, this.generate, this.clues.map(function (teamClues, challengeId) {
-          return html(_templateObject3_0e6304d027f211e9bf8c7b819e7646de(), challengeId, challengeId + 1, teamClues.sort(function (a, b) {
-            return a.from - b.from;
-          }).map(function (_ref4) {
-            var from = _ref4.from,
-                to = _ref4.to;
-            return html(_templateObject4_0e6304d027f211e9bf8c7b819e7646de(), from, to, from + 1, to + 1);
+        return html(_templateObject2_93fadf8029a711e9bba061412e213f85(), this.teamsCount, this.puzzlesCount, this.challengesCount, this.teamsCount, this.handleTeamsInput, this.puzzlesCount, this.handlePuzzlesInput, this.challengesCount, this.handleChallengesInput, this.generate, this.challenges.length ? html(_templateObject3_93fadf8029a711e9bba061412e213f85(), this.challenges.map(function (challenge) {
+          return html(_templateObject4_93fadf8029a711e9bba061412e213f85(), challenge.getId(), challenge, challenge.getAnswers().map(function (answer) {
+            return html(_templateObject5_93fadf8029a711e9bba061412e213f85(), answer.getId(), answer.getFrom(), answer.getToClue(), answer.getTo());
           }));
-        }), this.givenClues.map(function (challengeClues, teamId) {
-          return html(_templateObject5_0e6304d027f211e9bf8c7b819e7646de(), teamId, teamId + 1, challengeClues.map(function (_ref5, challengeId) {
-            var team = _ref5.team,
-                challenge = _ref5.challenge;
-            return html(_templateObject6_0e6304d027f211e9bf8c7b819e7646de(), teamId, challengeId, challenge + 1, team + 1);
-          }));
-        }), this.receivedClues.map(function (challengeClues, teamId) {
-          return html(_templateObject7_0e6304d027f211e9bf8c7b819e7646de(), teamId, teamId + 1, challengeClues.map(function (_ref6, challengeId) {
-            var team = _ref6.team,
-                challenge = _ref6.challenge;
-            return html(_templateObject8_0e6304d027f211e9bf8c7b819e7646de(), teamId, challengeId, challenge + 1, team + 1);
-          }));
-        }));
+        })) : '');
       }
     }, {
       key: "generate",
@@ -3633,9 +3813,23 @@ define(["exports"], function (_exports) {
         this.teamsCount = e.target.value;
       }
     }, {
+      key: "handlePuzzlesInput",
+      value: function handlePuzzlesInput(e) {
+        this.puzzlesCount = e.target.value;
+      }
+    }, {
       key: "handleChallengesInput",
       value: function handleChallengesInput(e) {
         this.challengesCount = e.target.value;
+      }
+    }, {
+      key: "game",
+      set: function set(value) {
+        if (babelHelpers.instanceof(value, Game)) {
+          this.teams = value.getTeams();
+          this.puzzles = value.getPuzzles();
+          this.challenges = value.getChallenges();
+        }
       }
     }]);
     return T3XDojoClueGeneratorApp;

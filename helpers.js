@@ -1,14 +1,16 @@
 function shuffle(a) {
+  var _a = babelHelpers.toConsumableArray(a);
+
   var j, x, i;
 
-  for (i = a.length - 1; i > 0; i--) {
+  for (i = _a.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
+    x = _a[i];
+    _a[i] = _a[j];
+    _a[j] = x;
   }
 
-  return a;
+  return _a;
 }
 
 function getRandomInt(min, max) {
