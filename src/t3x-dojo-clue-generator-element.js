@@ -1,4 +1,8 @@
 import { LitElement, html } from 'lit-element';
+import { Puzzle } from './models/Puzzle';
+import { Team } from './models/Team';
+import { Challenge } from './models/Challenge';
+import { Game } from './models/Game';
 
 export class T3XDojoClueGeneratorElement extends LitElement {
   /**
@@ -7,10 +11,9 @@ export class T3XDojoClueGeneratorElement extends LitElement {
    */
   static get properties() {
     return {
-      teams: { type: Number, },
-      challenges: { type: Number, },
-
-      clues: { type: Array, },
+      teamsCount: { type: Number, },
+      puzzlesCount: { type: Number, },
+      challengesCount: { type: Number, },
     };
   }
 
@@ -20,9 +23,9 @@ export class T3XDojoClueGeneratorElement extends LitElement {
   constructor() {
     super();
 
-    this.teams = 0;
-    this.challenges = 0;
-    this.clues = [];
+    this.teamsCount = 0;
+    this.puzzlesCount = 0;
+    this.challengesCount = 0;
   }
 
   render() {
@@ -34,81 +37,46 @@ export class T3XDojoClueGeneratorElement extends LitElement {
   }
 
   generate() {
-    let clues = [];
-    let _teams = [...Array(this.teams).keys()];
+    const puzzles = this.createPuzzles(this.puzzlesCount, this.challengesCount);
+    const teams = this.createTeams(this.teamsCount, puzzles);
+    const challenges = this.createChallenges(this.challengesCount, teams);
 
-    for (let challenge = 0; challenge < this.challenges; challenge++) {
-      clues[challenge] = [];
-      _teams = shuffle(_teams);
-      for (let from = 0, to = 1; from < _teams.length; from++ , to = ((to + 1) % _teams.length)) {
-        clues[challenge].push(this._createTeamClue(_teams[from], _teams[to]));
-      }
-    }
+    const game = new Game((new Date()).getTime(), teams, puzzles, challenges);
 
-    this.clues = clues;
-
-    this.dispatchEvent(new CustomEvent('clues-generated', {
+    this.dispatchEvent(new CustomEvent('game-created', {
       detail: {
-        "clues": this.getClues(),
-        "givenClues": this.getGivenClues(),
-        "receivedClues": this.getReceivedClues(),
+        "game": game,
       },
       bubbles: true,
       composed: true,
     }));
 
-    return clues;
+    return game;
   }
-
-  getClues() {
-    return this.clues;
+  createPuzzles(quantity, clueQuantity) {
+    return [...Array(quantity).keys()].map(i => {
+      return new Puzzle(i, String.fromCharCode('A'.charCodeAt(0) + i), clueQuantity);
+    });
   }
-  getGivenClues() {
-    const givenClues = [];
-    const clues = this.getClues();
+  createTeams(quantity, puzzles) {
+    let _puzzles = [];
+    do {
+      _puzzles = _puzzles.concat(puzzles);
+    } while (_puzzles.length < quantity);
+    _puzzles = shuffle(_puzzles.slice(0, quantity));
 
-    for (let team = 0; team < this.teams; team++) {
-      givenClues[team] = [];
-    }
+    const teamNames = [
+    ];
 
-    for (let challenge = 0; challenge < clues.length; challenge++) {
-      const teamClues = clues[challenge];
-      teamClues.map(({from, to}) => {
-        givenClues[from][challenge] = this._createChallengeClue(to, challenge);
-      })
-    }
-
-    return givenClues;
+    return [...Array(quantity).keys()].map(i => {
+      const teamName = teamNames.length > i ? teamNames[i] : `T${i + 1}`;
+      return new Team(i, teamName, _puzzles.pop());
+    });
   }
-  getReceivedClues() {
-    const receivedClues = [];
-    const clues = this.getClues();
-
-    for (let team = 0; team < this.teams; team++) {
-      receivedClues[team] = [];
-    }
-
-    for (let challenge = 0; challenge < clues.length; challenge++) {
-      const teamClues = clues[challenge];
-      teamClues.map(({from, to}) => {
-        receivedClues[to][challenge] = this._createChallengeClue(from, challenge);
-      })
-    }
-
-    return receivedClues;
-  }
-
-  _createTeamClue(from, to) {
-    return {
-      from,
-      to,
-    };
-  }
-  _createChallengeClue(team, challenge) {
-    return {
-      team,
-      challenge,
-    };
+  createChallenges(quantity, teams) {
+    return [...Array(quantity).keys()].map(i => {
+      return new Challenge(i, `${i + 1}`, teams);
+    });
   }
 }
 

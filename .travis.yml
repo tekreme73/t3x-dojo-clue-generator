@@ -10,6 +10,9 @@ cache:
 before_script:
   - npm install -g polymer-cli
   - npm run lint
+branches:
+  only:
+  - master
 deploy:
   provider: pages
   skip-cleanup: true
